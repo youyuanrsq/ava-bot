@@ -33,11 +33,7 @@ pub struct AppState {
 impl Default for AppState {
     fn default() -> Self {
         Self {
-            llm: LlmSdk::new(
-                "https://api.openai.com/v1",
-                env::var("OPENAI_API_KEY").unwrap(),
-                3,
-            ),
+            llm: LlmSdk::new(env::var("OPENAI_API_KEY").unwrap()),
             events: DashMap::new(),
         }
     }

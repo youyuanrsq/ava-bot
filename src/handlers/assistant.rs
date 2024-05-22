@@ -174,7 +174,7 @@ async fn chat_completion(
     llm: &LlmSdk,
     messages: Vec<ChatCompletionMessage>,
 ) -> anyhow::Result<String> {
-    let req = ChatCompletionRequest::new(messages);
+    let req = ChatCompletionRequest::new(llm_sdk::ChatCompleteModel::Gpt3Turbo, messages);
     let mut res = llm.chat_completion(req).await?;
     let content = res
         .choices

@@ -58,7 +58,11 @@ pub(crate) fn tool_completion_request(
       ChatCompletionMessage::new_system("I can help to identify which tool to use, if no proper tool could be used, I'll directly reply the message with pure text", "Ava"),
       ChatCompletionMessage::new_user(input.into(), name)
       ];
-    ChatCompletionRequest::new_with_tools(messages, all_tools())
+    ChatCompletionRequest::new_with_tools(
+        llm_sdk::ChatCompleteModel::Gpt3Turbo,
+        messages,
+        all_tools(),
+    )
 }
 
 // TODO: llm-sdk shall provide fuctionality to generate this code
